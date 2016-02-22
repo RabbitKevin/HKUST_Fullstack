@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <title>Matching Game</title>
+        <style>
+            img{
+                position : absolute
+            }
+            div{
+                position : absolute;
+                width : 500px;
+                height : 500px
+            }
+            #rightSide{
+                left: 500px;
+                border-left: 1px solid black
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Matching Game</h1>
+        <p onclick="hehe()">Click the extra face in the left side</p>
+        <button type="button" onclick="generateFaces()">Go</button>
+        <div id="leftSide"></div>
+        <div id="rightSide"></div>
+        <script text="text/javascript">
+            var numberOfFaces = 5;
+            var theLeftSide = document.getElementById("leftSide");
+            function generateSingleFace() {
+                var face = document.createElement('img');
+                face.src = 'http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png';
+                var face_style = face.style;
+                var top = Math.floor(Math.random()*400)+'px';
+                face_style.top = top;
+                var left = Math.floor(Math.random()*400)+'px';
+                face_style.left = left;
+                theLeftSide.appendChild(face);
+            }
+            function generateFaces() {
+                while (theLeftSide.firstChild) {
+                    theLeftSide.removeChild(theLeftSide.firstChild);
+                }
+                for(var i = 0; i < numberOfFaces; ++i) {
+                    generateSingleFace();
+                }
+                //numberOfFaces+=5;
+            }
+            generateFaces();
+        </script>
+    </body>
+</html>
